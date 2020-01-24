@@ -1,0 +1,21 @@
+{
+    "name": "root/game",
+    "authors": [
+        {
+            "name": "Eugene Kurilov",
+            "email": "eugenekurilov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.13",
+        "doctrine/orm": "^2.6.2",
+        "symfony/yaml": "2.*"
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0"
+    },
+    "files" : [
+        "config.php",
+        "src/bootstrap.php"
+    ]
+}
