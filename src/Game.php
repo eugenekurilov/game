@@ -8,21 +8,19 @@ namespace sts;
  */
 class Game
 {
-    protected $firstUserId = null;
-    protected $secondUserId = null;
+    protected $leftUserId = null;
+    protected $rightUserId = null;
     protected $gameId = null;
 
     /**
      * Game constructor.
-     * @param int $firstUserId
-     * @param int $secondUserId
+     * @param int $leftUserId
+     * @param int $rightUserId
      */
-    public function __construct(int $firstUserId, int $secondUserId)
+    public function __construct(int $leftUserId, int $rightUserId)
     {
-        $this->firstUserId = $firstUserId;
-        $this->secondUserId = $secondUserId;
-        // TODO DUMMY
-        $this->gameId = rand(0,10);
+        $this->leftUserId = $leftUserId;
+        $this->rightUserId = $rightUserId;
     }
 
     /**

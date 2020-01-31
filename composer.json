@@ -13,9 +13,5 @@
     },
     "require-dev": {
         "codeception/codeception": "^3.0"
-    },
-    "files" : [
-        "config.php",
-        "src/bootstrap.php"
-    ]
+    }
 }

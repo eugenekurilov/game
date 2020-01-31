@@ -1,12 +1,23 @@
 <?php
 namespace sts;
 
+use sts\entities\Games;
+use Doctrine\ORM\EntityManager;
+
 /**
  * Class Api
  * @package sts
  */
 class Api
 {
+    /** @var EntityManager|null  */
+    private $em = null;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
     public function games(?array $data)
     {
         return json_encode([1, 2, 3, 4]);
@@ -29,17 +40,20 @@ class Api
     public function create(?array $data)
     {
         if (is_null($data)
-            || !isset($data['first_user_id'])
-            || !isset($data['second_user_id'])
+            || !isset($data['left_user_id'])
+            || !isset($data['right_user_id'])
 
         ) {
             return;
         }
 
-        $data['game_id'] = (new Game(
-            $data['first_user_id'],
-            $data['second_user_id']
-        ))->getGameId();
+        $game = new Games();
+        $game->setLeftUserId(1);
+        $game->setRightUserId(2);
+        $this->em->persist($game);
+        $this->em->flush();
+
+        $data['game_id'] = $game->getId();
 
         return json_encode($data);
     }

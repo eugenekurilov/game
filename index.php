@@ -6,6 +6,7 @@ use sts\App;
 
 $loader = require( __DIR__ . '/vendor/autoload.php' );
 $loader->addPsr4( 'sts\\', __DIR__ . '/src/' );
+require(__DIR__ . '/bootstrap.php');
 
 /** @var App $app */
 $app = App::create();

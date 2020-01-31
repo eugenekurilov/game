@@ -16,6 +16,8 @@ class App
 
     public function run()
     {
+        global $em;
+
         $result = '';
 
         if (!count($this->requestUri)
@@ -24,7 +26,7 @@ class App
         }
 
         if ($this->method == 'GET') {
-            $api = new Api();
+            $api = new Api($em);
             $method = $this->requestUri[1];
             if (method_exists($api, $method)) {
                 $result = $api->$method($this->data);
