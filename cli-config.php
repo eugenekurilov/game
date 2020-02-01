@@ -1,14 +1,16 @@
 <?php
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
+require( __DIR__ . '/vendor/autoload.php');
 require(__DIR__ . '/config.php');
 
 $isDevMode = false;
 
 $config = Setup::createAnnotationMetadataConfiguration(
     [
-        __DIR__."/src/entities/"
+        __DIR__ . '/src/entities/'
     ],
     $isDevMode
 );
@@ -19,5 +21,9 @@ $dbParams = [
     'password' => $parameters['password'],
     'dbname'   => $parameters['dbname'],
 ];
-/** @var EntityManager $em */
-$em = EntityManager::create($dbParams, $config);
+$entityManager = EntityManager::create($dbParams, $config);
+
+return ConsoleRunner::createHelperSet(
+    $entityManager
+);
+
