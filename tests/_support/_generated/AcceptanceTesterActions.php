@@ -2373,7 +2373,7 @@ trait AcceptanceTesterActions
      *
      * Example:
      * ``` html
-     * <iframe name="another_frame" src="http://example.com">
+     * <iframe name="another_frame" sts="http://example.com">
      * ```
      *
      * ``` php

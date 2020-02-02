@@ -36,11 +36,6 @@ class Api
             return $this->error('invalid parameters');
         }
 
-        $data['left_user_id'] = 1;
-        $data['right_user_id'] = 2;
-        $data['game_id'] = 1;
-        $data['ceil_id'] = 0;
-
         /* @var $game Games */
         if (($game = $this->em->find(':Games', $data['game_id'])) != null) {
             $map = $game->getMap();
@@ -55,7 +50,13 @@ class Api
 
             $this->em->persist($game);
             $this->em->flush();
+
+            return json_encode([
+                'status_id' => $game->getStatusId()
+            ]);
         }
+
+        return $this->error('invalid parameters');
     }
 
     /**
@@ -102,6 +103,7 @@ class Api
         $this->em->flush();
 
         $data['game_id'] = $game->getId();
+        $data['status_id'] = $game->getStatusId();
 
         return json_encode($data);
     }

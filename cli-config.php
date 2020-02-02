@@ -10,7 +10,7 @@ $isDevMode = false;
 
 $config = Setup::createAnnotationMetadataConfiguration(
     [
-        __DIR__ . '/src/entities/'
+        __DIR__ . '/sts/entities/'
     ],
     $isDevMode
 );
