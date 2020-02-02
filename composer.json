@@ -2,8 +2,8 @@
     "name": "root/game",
     "authors": [
         {
-            "name": "Eugene Kurilov",
-            "email": "eugenekurilov@gmail.com"
+            "name": "Eugene",
+            "email": "test@test.com"
         }
     ],
     "require": {
