@@ -4,14 +4,16 @@ use Doctrine\ORM\EntityManager;
 
 require(__DIR__ . '/config.php');
 
-$isDevMode = false;
+$isDevMode = true;
 
 $config = Setup::createAnnotationMetadataConfiguration(
     [
-        __DIR__."/src/entities/"
+        __DIR__. '/src/entities/'
     ],
-    $isDevMode
+    $isDevMode, null,null,false
 );
+
+$config->addEntityNamespace('', 'sts\entities');
 
 $dbParams = [
     'driver'   => $parameters['driver'],

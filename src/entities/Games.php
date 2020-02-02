@@ -3,6 +3,11 @@
 namespace sts\entities;
 
 use sts\enum\Status;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
 /** @Entity */
 class Games
@@ -19,7 +24,8 @@ class Games
     private $rightUserId = null;
     /** @Column(type="boolean") */
     private $statusId;
-
+    /** @Column(type="json_array") */
+    private $map;
     /** @Column(type="datetime", name="created_at", options={"default": "CURRENT_TIMESTAMP"}) */
     private $createdAt;
 
@@ -27,8 +33,24 @@ class Games
     {
         $this->createdAt = new \DateTime();
         $this->statusId = Status::PROGRESS;
+        $this->map = [
+            '-', '-', '-',
+            '-', '-', '-',
+            '-', '-', '-',
+        ];
     }
 
+    /**
+     * @return array
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * @return int
+     */
     public function getStatusId()
     {
         return $this->statusId;
@@ -64,6 +86,14 @@ class Games
     public function getLeftUserId()
     {
         $this->leftUserId;
+    }
+
+    /**
+     * @param array $map
+     */
+    public function setMap(array $map)
+    {
+        $this->map = $map;
     }
 
     /**

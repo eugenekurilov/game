@@ -14,13 +14,6 @@ class ApiTest extends \Codeception\Test\Unit
     {
     }
 
-    public function testGames()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
     public function testStep()
     {
         $this->markTestIncomplete(
