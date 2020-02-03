@@ -2,7 +2,7 @@
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-require(__DIR__ . '/config.php');
+require(__DIR__ . '/configs/config.php');
 
 $isDevMode = true;
 

@@ -8,16 +8,15 @@ class App
     protected $action = '';
     protected $method = '';
     protected $data = [];
+    protected $configs = [];
 
-    public static function create()
+    public static function create(array $configs)
     {
-        return new App();
+        return new App($configs);
     }
 
     public function run()
     {
-        global $em;
-
         $result = '';
 
         if (!count($this->requestUri)
@@ -26,7 +25,7 @@ class App
         }
 
         if ($this->method == 'GET') {
-            $api = new Api($em);
+            $api = new Api(\DbManager::getInstance($this->configs));
             $method = $this->requestUri[1];
             if (method_exists($api, $method)) {
                 $result = $api->$method($this->data);
@@ -36,7 +35,7 @@ class App
         return $result;
     }
 
-    protected function __construct()
+    protected function __construct(array $configs)
     {
         header("Access-Control-Allow-Orgin: *");
         header("Access-Control-Allow-Methods: *");
@@ -46,5 +45,7 @@ class App
         $this->requestParams = $_REQUEST;
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->data = json_decode(file_get_contents("php://input"), true);
+
+        $this->configs = $configs;
     }
 }

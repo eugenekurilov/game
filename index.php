@@ -9,5 +9,7 @@ $loader->addPsr4( 'sts\\', __DIR__ . '/sts/');
 require(__DIR__ . '/bootstrap.php');
 
 /** @var App $app */
-$app = App::create();
+$app = App::create(
+    require(__DIR__ . '/configs/config.php')
+);
 echo $app->run();

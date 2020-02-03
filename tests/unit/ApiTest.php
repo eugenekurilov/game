@@ -1,4 +1,5 @@
 <?php
+
 class ApiTest extends \Codeception\Test\Unit
 {
     /**
@@ -9,26 +10,9 @@ class ApiTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $isDevMode = true;
-
-        $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
-            [
-                __DIR__. '/sts/entities/'
-            ],
-            $isDevMode, null,null,false
+        $this->em = \sts\DbManager::getInstance(
+            require(__DIR__ . '/../../configs/config.php')
         );
-
-        $config->addEntityNamespace('', 'sts\entities');
-
-        $dbParams = [
-            'driver'   => 'driver',
-            'user'     => 'user',
-            'password' => 'password',
-            'dbname'   => 'dbname',
-        ];
-
-        /** @var EntityManager $em */
-        $this->em = \Doctrine\ORM\EntityManager::create($dbParams, $config);
     }
 
     protected function _after()
