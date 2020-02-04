@@ -3,5 +3,5 @@ return [
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
     'password' => '',
-    'dbname'   => 'game-test',
+    'dbname'   => 'game_test',
 ];

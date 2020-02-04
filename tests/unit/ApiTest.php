@@ -11,7 +11,7 @@ class ApiTest extends \Codeception\Test\Unit
     protected function _before()
     {
         $this->em = \sts\DbManager::getInstance(
-            require(__DIR__ . '/../../configs/config.php')
+            require(__DIR__ . '/../../configs/config-test.php')
         );
     }
 
