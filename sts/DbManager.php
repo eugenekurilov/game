@@ -20,7 +20,7 @@ class DbManager
 
         $config = Setup::createAnnotationMetadataConfiguration(
             [
-                __DIR__ . '/sts/entities/'
+                __DIR__ . '/entities/'
             ],
             $isDevMode, null,null,false
         );
